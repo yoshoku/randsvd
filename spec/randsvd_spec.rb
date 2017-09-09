@@ -6,6 +6,7 @@ RSpec.describe RandSVD do
   let(:k) { 10 }
   let(:mat) { NMatrix.rand([m, k]).dot(NMatrix.rand([k, n])) }
   let(:err) { 1.0e-5 }
+  let(:seed) { 1000 }
 
   it 'has small reconstruction error.' do
     u, s, vt = described_class.gesvd(mat, k)
@@ -25,5 +26,14 @@ RSpec.describe RandSVD do
     expect(th_u).to be_within(err).of(tr_u)
     expect(th_s).to be_within(err).of(tr_s)
     expect(th_vt).to be_within(err).of(tr_vt)
+  end
+
+  it 'obtains the same results by fixing the random seed.' do
+    u_a, s_a, vt_a = described_class.gesvd(mat, k, 0, seed)
+    u_b, s_b, vt_b = described_class.gesvd(mat, k, 0, seed)
+    expect(described_class.seed).to be(seed)
+    expect(u_a).to eq(u_b)
+    expect(s_a).to eq(s_b)
+    expect(vt_a).to eq(vt_b)
   end
 end

@@ -5,33 +5,41 @@ require 'nmatrix/lapacke'
 # using a randomized algorithm.
 class RandSVD
   class << self
+    attr_reader :seed
+
     # Compute the randomized singular value decompostion
     # using NMatrix::LAPACK.gesvd method.
     #
-    # @param mat [NMatrix] The m-by-n input matrix to be decomposed.
-    # @param k   [Integer] The number of singular values.
-    # @param t   [Integer] The number of iterations for orthogonalization.
+    # @param mat  [NMatrix] The m-by-n input matrix to be decomposed.
+    # @param k    [Integer] The number of singular values.
+    # @param t    [Integer] The number of iterations for orthogonalization.
+    # @param seed [Integer] The random seed used to generate the random matrix.
     #
     # @return [Array<NMatrix>]
     #   Returns array containing the m-by-k matrix of left-singular vectors,
     #   the k-by-1 matrix containing the singular values in decreasing order,
     #   and the k-by-n transposed matrix of right-singular vectors.
-    def gesvd(mat, k, t = 0)
+    def gesvd(mat, k, t = 0, seed = nil)
+      seed ||= srand
+      @seed = seed
       rsvd(mat, k, t, 0)
     end
 
     # Compute the randomized singular value decompostion
     # using NMatrix::LAPACK.gesdd method.
     #
-    # @param mat [NMatrix] The m-by-n input matrix to be decomposed.
-    # @param k   [Integer] The number of singular values.
-    # @param t   [Integer] The number of iterations for orthogonalization.
+    # @param mat  [NMatrix] The m-by-n input matrix to be decomposed.
+    # @param k    [Integer] The number of singular values.
+    # @param t    [Integer] The number of iterations for orthogonalization.
+    # @param seed [Integer] The random seed used to generate the random matrix.
     #
     # @return [Array<NMatrix>]
     #   Returns array containing the m-by-k matrix of left-singular vectors,
     #   the k-by-1 matrix containing the singular values in decreasing order,
     #   and the k-by-n transposed matrix of right-singular vectors.
-    def gesdd(mat, k, t = 0)
+    def gesdd(mat, k, t = 0, seed = nil)
+      seed ||= srand
+      @seed = seed
       rsvd(mat, k, t, 1)
     end
 
@@ -45,9 +53,15 @@ class RandSVD
       truncate_svd_mats(mat_u, vec_s, mat_q.dot(mat_vt.transpose), k)
     end
 
+    def rand_uniform(shape)
+      rng = Random.new(@seed)
+      rnd_vals = Array.new(NMatrix.size(shape)) { rng.rand }
+      NMatrix.new(shape, rnd_vals, dtype: :float64, stype: :dense)
+    end
+
     def rand_normal(shape, mu = 0.0, sigma = 1.0)
-      a = NMatrix.random shape
-      b = NMatrix.random shape
+      a = rand_uniform(shape)
+      b = rand_uniform(shape)
       ((a.log * -2.0).sqrt * (b * 2.0 * Math::PI).sin) * sigma + mu
     end
 
