@@ -1,5 +1,8 @@
 # RandSVD
 
+[![Build Status](https://travis-ci.org/yoshoku/RandSVD.svg?branch=master)](https://travis-ci.org/yoshoku/RandSVD)
+[![Gem Version](https://badge.fury.io/rb/randsvd.svg)](https://badge.fury.io/rb/randsvd)
+
 RandSVD is a class that performs truncated singular value decomposition using a randomized algorithm.
 To implement, I referred to the following papers:
 
