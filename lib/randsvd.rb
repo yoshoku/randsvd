@@ -43,7 +43,7 @@ class RandSVD
       rsvd(mat, k, t, 1)
     end
 
-    protected
+    private
 
     def rsvd(mat, k, t, svd_type)
       n = mat.shape[1]
