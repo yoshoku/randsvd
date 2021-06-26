@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'randsvd/version'
 require 'nmatrix/lapacke'
 
