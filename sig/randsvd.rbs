@@ -1,0 +1,16 @@
+class RandSVD
+  VERSION: String
+
+  attr_reader self.seed: untyped
+
+  def self.gesvd: (NMatrix mat, Integer k, ?::Integer t, ?Integer? seed) -> [NMatrix, NMatrix, NMatrix]
+  def self.gesdd: (NMatrix mat, Integer k, ?::Integer t, ?Integer? seed) -> [NMatrix, NMatrix, NMatrix]
+
+  private
+
+  def self.rsvd: (NMatrix mat, Integer k, Integer t, Integer svd_type) -> [NMatrix, NMatrix, NMatrix]
+  def self.rand_uniform: (Array[Integer] shape) -> NMatrix
+  def self.rand_normal: (Array[Integer] shape, ?Float mu, ?Float sigma) -> NMatrix
+  def self.make_orthonormal_mat: (NMatrix mat, Integer l, Integer t) -> NMatrix
+  def self.truncate_svd_mats: (NMatrix mat_u, NMatrix vec_s, NMatrix mat_v, Integer k) -> [NMatrix, NMatrix, NMatrix]
+end

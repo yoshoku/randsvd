@@ -1,0 +1,20 @@
+class NMatrix
+  INDEX_DTYPE: Symbol
+
+  def self.size: (untyped shape) -> untyped
+
+  def initialize: (*untyped) -> untyped
+
+  def []: (*untyped) -> untyped
+  def *: (untyped) -> untyped
+  def +: (untyped) -> untyped
+
+  def shape: () -> untyped
+  def transpose: (?untyped permute) -> untyped
+  def dot: (untyped right_v) -> untyped
+  def log: (*untyped) -> untyped
+  def sin: () -> untyped
+  def factorize_qr: () -> untyped
+  def gesdd: (?untyped workspace_size) -> untyped
+  def gesvd: (?untyped workspace_size) -> untyped
+end
