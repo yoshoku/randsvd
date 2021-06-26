@@ -43,7 +43,9 @@ reconstructed_matrix = u.dot(NMatrix.diag(s).dot(vt))
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/randsvd. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/yoshoku/randsvd.
+This project is intended to be a safe, welcoming space for collaboration,
+and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
