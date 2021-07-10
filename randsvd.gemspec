@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
+    f.match(%r{^(test|spec|features|sig-deps)/})
   end
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
@@ -23,4 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'nmatrix'
   spec.add_runtime_dependency 'nmatrix-lapacke'
+  spec.add_runtime_dependency 'numo-narray', '>= 0.9.1'
+  spec.add_runtime_dependency 'numo-linalg', '>= 0.1.4'
 end
