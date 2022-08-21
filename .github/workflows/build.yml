@@ -10,7 +10,7 @@ jobs:
       matrix:
         ruby: [ '2.7' ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install BLAS and LAPACK
         run: sudo apt-get install -y libopenblas-dev libatlas-base-dev liblapacke-dev
       - name: Set up Ruby ${{ matrix.ruby }}
