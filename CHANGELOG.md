@@ -1,3 +1,7 @@
+# 0.2.2
+- Add rubygems_mfa_required option.
+- Remove unneeded depedencies.
+
 # 0.2.1
 - Remove dependent gem's type declaration file from installation files.
 
