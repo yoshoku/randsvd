@@ -9,6 +9,9 @@ To implement, I referred to the following papers:
 - P.-G. Martinsson, A. Szlam, M. Tygert, "Normalized power iterations for the computation of SVD," Proc. of NIPS Workshop on Low-Rank Methods for Large-Scale Machine Learning, 2011.
 - P.-G. Martinsson, V. Rokhlin, M. Tygert, "A randomized algorithm for the approximation of matrices," Tech. Rep., 1361, Yale University Department of Computer Science, 2006.
 
+Note:
+Since NMatrix does not support Ruby 3, the author recommends using [numo-linalg-randsvd](https://github.com/yoshoku/numo-linalg-randsvd) instead.
+
 ## Installation
 
 Add this line to your application's Gemfile:
