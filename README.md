@@ -1,5 +1,7 @@
 # RandSVD
 
+**This project is discontinued. Development has been moved to [Numo::Linalg.randsvd](https://github.com/yoshoku/numo-linalg-randsvd).**
+
 [![Build Status](https://github.com/yoshoku/randsvd/actions/workflows/build.yml/badge.svg)](https://github.com/yoshoku/randsvd/actions/workflows/build.yml)
 [![Gem Version](https://badge.fury.io/rb/randsvd.svg)](https://badge.fury.io/rb/randsvd)
 
